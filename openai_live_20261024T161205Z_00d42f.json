@@ -1,0 +1,6119 @@
+{
+  "schema": "joint-delivery-openai-api-experiment/v1",
+  "created_utc": "2026-10-24T16:12:05.434585+00:00",
+  "model": "gpt-6-luna",
+  "source": "published synthetic scenarios only",
+  "scope": "OpenAI proposal -> original deterministic PoC verifier; no real approvals, dispatch, or per-output Lean proof",
+  "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+  "rows": [
+    {
+      "case_id": "JD01",
+      "description": "各社の条件・承認・計画根拠・引渡し確認がそろう合成例。",
+      "original_expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0fa724974c5a7da1016adcd8d60fe487d09fa8f1b6c42308c2",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"ACCEPT\",\"reason\":\"容量・時間条件を満たし、関係者の承認、計画根拠、引渡し確認がそろっています。\"}",
+      "usage": {
+        "input_tokens": 1004,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 69,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1073
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "ACCEPT",
+        "reason": "容量・時間条件を満たし、関係者の承認、計画根拠、引渡し確認がそろっています。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD01",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "PASS",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "PASS",
+              "issues": []
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": true
+          },
+          "record_sha256": "be6ad2b1424bc2fbf22bb073e562c7b3a137922d61cc40392f59d64af08280b1"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD02",
+      "description": "C社の合成承認を欠く。情報不足を承認済みと扱わない。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_07a099be8c64b6c5016adcd8d90a7c87d09060f1fd34809447",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"容量・時刻・引渡しの根拠はありますが、C社の有効な参加承認がありません。\"}",
+      "usage": {
+        "input_tokens": 969,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 65,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1034
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "容量・時刻・引渡しの根拠はありますが、C社の有効な参加承認がありません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD02",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              null
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "APPROVAL_MISSING",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "908fb10954c338e6127f272582b8aef49b8252c4f5c18a5666bc38b9d66bf097"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD03",
+      "description": "C社の重量が不明。空き容量があるとは判断しない。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0f9347208d613825016adcd8dacae087d084701322d7d18c94",
+      "raw_model_output": "{\"candidate_kg\":null,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"重量が不明で容量適合を判断できません。重量の確認が必要です。\"}",
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 57,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1053
+      },
+      "proposal": {
+        "candidate_kg": null,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "重量が不明で容量適合を判断できません。重量の確認が必要です。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD03",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": null,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "19f3ed7671c8cdc855d6dfff519a90635f06bb1bb8d766179e932980ea14c786",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "19f3ed7671c8cdc855d6dfff519a90635f06bb1bb8d766179e932980ea14c786",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "19f3ed7671c8cdc855d6dfff519a90635f06bb1bb8d766179e932980ea14c786",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "19f3ed7671c8cdc855d6dfff519a90635f06bb1bb8d766179e932980ea14c786",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "19f3ed7671c8cdc855d6dfff519a90635f06bb1bb8d766179e932980ea14c786",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "19f3ed7671c8cdc855d6dfff519a90635f06bb1bb8d766179e932980ea14c786",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "WEIGHT_UNKNOWN",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "5f2c9d8a13b2e5b911add2b3e0acc6017f3dd0ad602a3136d11f876e561e95ba"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD04",
+      "description": "C社への予定到着時刻が未定。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0e33bdb71692cd4b016adcd8dc4ac087d0a1f2e7d687f8222e",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"重量・パレット上限内で到着時刻も候補窓内ですが、C社への予定到着時刻が未定のため、計画根拠を確認できません。\"}",
+      "usage": {
+        "input_tokens": 990,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 81,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1071
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "重量・パレット上限内で到着時刻も候補窓内ですが、C社への予定到着時刻が未定のため、計画根拠を確認できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [
+          "arrival"
+        ],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD04",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": null,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "c799566329295db7cff065d1f8324125bbdeca68ed7ad2815b0b5e1fe181d3a2",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "c799566329295db7cff065d1f8324125bbdeca68ed7ad2815b0b5e1fe181d3a2",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "c799566329295db7cff065d1f8324125bbdeca68ed7ad2815b0b5e1fe181d3a2",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "c799566329295db7cff065d1f8324125bbdeca68ed7ad2815b0b5e1fe181d3a2",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "c799566329295db7cff065d1f8324125bbdeca68ed7ad2815b0b5e1fe181d3a2",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "c799566329295db7cff065d1f8324125bbdeca68ed7ad2815b0b5e1fe181d3a2",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "ARRIVAL_UNKNOWN",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "8f661a6a49bc2fa9974a7b43e3dafb62e84d8729cc0f6195e408183e1b49727e"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD05",
+      "description": "C社の混載条件の確認が未完了。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0d0f3921ce3c6c56016adcd8e23ef487d08fcb7a450f4c1eb5",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"C社の混載条件が未確認のため、参加可否を判断できません。\"}",
+      "usage": {
+        "input_tokens": 991,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 57,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1048
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "C社の混載条件が未確認のため、参加可否を判断できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD05",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": null
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "391cdc762e0efba4dd84c05d939c930028ce41eca37cd43c0ca4bf90d811757f",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "391cdc762e0efba4dd84c05d939c930028ce41eca37cd43c0ca4bf90d811757f",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "391cdc762e0efba4dd84c05d939c930028ce41eca37cd43c0ca4bf90d811757f",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "391cdc762e0efba4dd84c05d939c930028ce41eca37cd43c0ca4bf90d811757f",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "391cdc762e0efba4dd84c05d939c930028ce41eca37cd43c0ca4bf90d811757f",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "391cdc762e0efba4dd84c05d939c930028ce41eca37cd43c0ca4bf90d811757f",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "MIXING_UNKNOWN",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "75bcc5bcb76bff38dfaa2336035fb6a6b807d5e8af745325465d4c463c7f63c6"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD06",
+      "description": "B社の費用条件への合意が未確認。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_06cb5b9eba5fa0e0016adcd8e61fc087d0aa1e9500e9487668",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"B社の費用条件への合意が未確認のため、受入条件が成立したと判断できません。\"}",
+      "usage": {
+        "input_tokens": 991,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 63,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1054
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "B社の費用条件への合意が未確認のため、受入条件が成立したと判断できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD06",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": null,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "23b944e9770d6a2232c3c1c7a0028e181865f986d881c0fca3c4e2d686a6272c",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "23b944e9770d6a2232c3c1c7a0028e181865f986d881c0fca3c4e2d686a6272c",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "23b944e9770d6a2232c3c1c7a0028e181865f986d881c0fca3c4e2d686a6272c",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "23b944e9770d6a2232c3c1c7a0028e181865f986d881c0fca3c4e2d686a6272c",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "23b944e9770d6a2232c3c1c7a0028e181865f986d881c0fca3c4e2d686a6272c",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "23b944e9770d6a2232c3c1c7a0028e181865f986d881c0fca3c4e2d686a6272c",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "TERMS_UNKNOWN",
+                    "party": "B"
+                  }
+                ]
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "110686ad55e588b7309e1db4e533ae1b40b920ac7e3e0b96b7ccab4a3ec8b79e"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD07",
+      "description": "一度そろったC社の承認を撤回する。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0a72ba070563480c016adcd8e868f887d08eb7b95d8383cf82",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"C社の承認が撤回されており、参加への有効な合意がありません。\"}",
+      "usage": {
+        "input_tokens": 993,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 60,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1053
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "C社の承認が撤回されており、参加への有効な合意がありません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD07",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": false,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "REVOKED",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "2426ec79e9d42c35106eb5c580a9753e3e33890e649399b997559282e407b04b"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD08",
+      "description": "有効期限と検証時刻が等しい承認は利用しない。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0115eff0fa464c66016adcd8eab56487d09551776169865b3a",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"候補Cの承認は有効期限と検証時刻が等しいため利用できず、参加合意を確認できません。\"}",
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 68,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1064
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "候補Cの承認は有効期限と検証時刻が等しいため利用できず、参加合意を確認できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD08",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 570
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "EXPIRED",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "9b53b3d58ded893b5da60d9f9a6080822e9ce168b695b40dd125de751dca7f57"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD10",
+      "description": "計画根拠が提供されていない。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0e7c0ec6489c6456016adcd8ec339087d081ba46e0a985b8a5",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"計画根拠がなく、条件成立を確認できません。\"}",
+      "usage": {
+        "input_tokens": 967,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 52,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1019
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "計画根拠がなく、条件成立を確認できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD10",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": null,
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "EVIDENCE_MISSING",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "12844d11e0a1276783b2fd72648400d8cab193dd1277b8fe1f580821212a03d0"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD12",
+      "description": "参加条件は成立しても、受領確認がなければ引渡し許可を出さない。",
+      "original_expected": {
+        "participation": "PASS",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0a295f57bd7cdf50016adcd8edc0a487d0b8fdfe0e7dfc57f4",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"参加条件と計画確認は成立していますが、受領確認が未完了のため引渡し許可を判断できません。\"}",
+      "usage": {
+        "input_tokens": 1002,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 67,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1069
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "参加条件と計画確認は成立していますが、受領確認が未完了のため引渡し許可を判断できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD12",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": null
+            }
+          },
+          "result": {
+            "participation": "PASS",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "RECEIVER_UNKNOWN",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "9c9b9d362b3b1d30e9a7db65aec1c040068e2293a1a91494c782ef8fe6593e7e"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD13",
+      "description": "参加判定と引渡し判定は別。",
+      "original_expected": {
+        "participation": "PASS",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0c0d12586c212b2f016adcd8f091d087d0a55be7bbd9fcaf8a",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"参加条件と計画根拠は満たしていますが、引渡し承認が確認できません。\"}",
+      "usage": {
+        "input_tokens": 948,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 61,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1009
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "参加条件と計画根拠は満たしていますが、引渡し承認が確認できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD13",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": null
+          },
+          "result": {
+            "participation": "PASS",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "HANDOFF_MISSING",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "dbfa40be2ef4ab82b5dff023db671ea42bf235a8d515668ffd910c92878c1e53"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD14",
+      "description": "既存荷物を残したままC社を追加すると4,000kgを超える。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_00a673cf80bb31fb016adcd8f251b887d0a677c0112fc6c4e7",
+      "raw_model_output": "{\"candidate_kg\":1300,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"DECLINE\",\"reason\":\"既存荷物を含む合計は4,100kgとなり、上限4,000kgを超えます。\"}",
+      "usage": {
+        "input_tokens": 1001,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 67,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1068
+      },
+      "proposal": {
+        "candidate_kg": 1300,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "DECLINE",
+        "reason": "既存荷物を含む合計は4,100kgとなり、上限4,000kgを超えます。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD14",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 1300,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ffba6fcc3b62bf80d168ddc8c0f6d9f095752e264965caed4c68bab247b6eda3",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ffba6fcc3b62bf80d168ddc8c0f6d9f095752e264965caed4c68bab247b6eda3",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ffba6fcc3b62bf80d168ddc8c0f6d9f095752e264965caed4c68bab247b6eda3",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ffba6fcc3b62bf80d168ddc8c0f6d9f095752e264965caed4c68bab247b6eda3",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "ffba6fcc3b62bf80d168ddc8c0f6d9f095752e264965caed4c68bab247b6eda3",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "ffba6fcc3b62bf80d168ddc8c0f6d9f095752e264965caed4c68bab247b6eda3",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "WEIGHT_OVER",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "15c1cc2e790ea084e88e2b7670dd157a768726000590af2c6e33d4ed27581a9d"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD15",
+      "description": "重量だけが収まっても、パレット数が上限を超える。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_01499875ebd9ff1b016adcd8f3e4e487d0897cacab942ee737",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":5,\"candidate_arrival\":570,\"recommendation\":\"DECLINE\",\"reason\":\"重量は上限内ですが、合計11パレットとなり上限10を超えます。\"}",
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 60,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1056
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 5,
+        "candidate_arrival": 570,
+        "recommendation": "DECLINE",
+        "reason": "重量は上限内ですが、合計11パレットとなり上限10を超えます。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD15",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 5,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "afc92cbcad433dfabff5c8fd915be0fe21368e0ce9776e76f165dfc1971f26aa",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "afc92cbcad433dfabff5c8fd915be0fe21368e0ce9776e76f165dfc1971f26aa",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "afc92cbcad433dfabff5c8fd915be0fe21368e0ce9776e76f165dfc1971f26aa",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "afc92cbcad433dfabff5c8fd915be0fe21368e0ce9776e76f165dfc1971f26aa",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "afc92cbcad433dfabff5c8fd915be0fe21368e0ce9776e76f165dfc1971f26aa",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "afc92cbcad433dfabff5c8fd915be0fe21368e0ce9776e76f165dfc1971f26aa",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "PALLETS_OVER",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "c3217d563ba86bdb9a47ecec0c1a2619628f9deb6f5ead1f3c68eeebd5da222c"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD16",
+      "description": "A社の許容遅延5分を超える案は採用しない。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0486f2374823eb2f016adcd8f6730087d08f1dc8d9468dc82b",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"DECLINE\",\"reason\":\"A社の到着は基準時刻から20分遅れ、許容遅延5分を超えています。\"}",
+      "usage": {
+        "input_tokens": 998,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 67,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1065
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "DECLINE",
+        "reason": "A社の到着は基準時刻から20分遅れ、許容遅延5分を超えています。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD16",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 556,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "aa52cb79a6d2c3924c8a2522456c67d615de601486627c778756c54e0bcab361",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "aa52cb79a6d2c3924c8a2522456c67d615de601486627c778756c54e0bcab361",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "aa52cb79a6d2c3924c8a2522456c67d615de601486627c778756c54e0bcab361",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "aa52cb79a6d2c3924c8a2522456c67d615de601486627c778756c54e0bcab361",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "aa52cb79a6d2c3924c8a2522456c67d615de601486627c778756c54e0bcab361",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "aa52cb79a6d2c3924c8a2522456c67d615de601486627c778756c54e0bcab361",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "EXISTING_DELAY",
+                    "party": "A"
+                  }
+                ]
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "92d443e6ee974d0acb5bb4ce5820eaf8c1a28f7291f02e6a7cda5c2b1316688e"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD17",
+      "description": "C社の合意済み納品時間帯から外れる。自動で条件を緩めない。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0e7daaf404c68e57016adcd8f864ec87d0958e8c5e073cd770",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":610,\"recommendation\":\"DECLINE\",\"reason\":\"Cの到着610分は合意済み時間帯540～600分を超過しており、自動で条件を緩められません。\"}",
+      "usage": {
+        "input_tokens": 1003,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 73,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1076
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 610,
+        "recommendation": "DECLINE",
+        "reason": "Cの到着610分は合意済み時間帯540～600分を超過しており、自動で条件を緩められません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD17",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 610,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "4fba548a4fc3bb721bac5bf6ac370ad2f30679d68e55cb449f73cd30fa32660e",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "4fba548a4fc3bb721bac5bf6ac370ad2f30679d68e55cb449f73cd30fa32660e",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "4fba548a4fc3bb721bac5bf6ac370ad2f30679d68e55cb449f73cd30fa32660e",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "4fba548a4fc3bb721bac5bf6ac370ad2f30679d68e55cb449f73cd30fa32660e",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "4fba548a4fc3bb721bac5bf6ac370ad2f30679d68e55cb449f73cd30fa32660e",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "4fba548a4fc3bb721bac5bf6ac370ad2f30679d68e55cb449f73cd30fa32660e",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "WINDOW_VIOLATION",
+                    "party": "C"
+                  },
+                  {
+                    "status": "REJECT",
+                    "code": "STOP_ORDER",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "cae6c2f9c1e4d08c6428cf46fcd86fe7827c784984134821769410af7a7d9793"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD18",
+      "description": "C社が混載を認めない場合、共同配送案は不適合。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0177ff455e582019016adcd8f9f98087d0939c81a4cb895e77",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"DECLINE\",\"reason\":\"C社が混載を認めない設定で、シナリオ上の共同配送案は不適合です。\"}",
+      "usage": {
+        "input_tokens": 997,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 65,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1062
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "DECLINE",
+        "reason": "C社が混載を認めない設定で、シナリオ上の共同配送案は不適合です。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD18",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": false
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "94ebc33f52cd84e9a4e240446ac6b203f974de6ec0aa20e0d9d7be75e1d01c53",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "94ebc33f52cd84e9a4e240446ac6b203f974de6ec0aa20e0d9d7be75e1d01c53",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "94ebc33f52cd84e9a4e240446ac6b203f974de6ec0aa20e0d9d7be75e1d01c53",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "94ebc33f52cd84e9a4e240446ac6b203f974de6ec0aa20e0d9d7be75e1d01c53",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "94ebc33f52cd84e9a4e240446ac6b203f974de6ec0aa20e0d9d7be75e1d01c53",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "94ebc33f52cd84e9a4e240446ac6b203f974de6ec0aa20e0d9d7be75e1d01c53",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "MIXING_DENIED",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "9131af7021447400578646df03c164f532bd16f01b9e1f89eeb780410e041d7a"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD19",
+      "description": "合意していない費用条件を多数決で押し切らない。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0faeab61d3afbba1016adcd8fb88fc87d0a369db59c7be1ad1",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"既存荷主Aが費用条件に合意していません。多数決で合意を代替できず、参加条件の成立を確認できません。\"}",
+      "usage": {
+        "input_tokens": 996,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 73,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1069
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "既存荷主Aが費用条件に合意していません。多数決で合意を代替できず、参加条件の成立を確認できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD19",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": false,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "b7ba98dd433e3f73199492ec04e24f7b2dea682895700ab52343b557428fea0c",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "b7ba98dd433e3f73199492ec04e24f7b2dea682895700ab52343b557428fea0c",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "b7ba98dd433e3f73199492ec04e24f7b2dea682895700ab52343b557428fea0c",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "b7ba98dd433e3f73199492ec04e24f7b2dea682895700ab52343b557428fea0c",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "b7ba98dd433e3f73199492ec04e24f7b2dea682895700ab52343b557428fea0c",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "b7ba98dd433e3f73199492ec04e24f7b2dea682895700ab52343b557428fea0c",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "TERMS_DENIED",
+                    "party": "A"
+                  }
+                ]
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "8a3cf63be2be540d677e1d50db81e39d92382883984a33ddccbb5367f595de83"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD20",
+      "description": "受領確認者が今回の追加荷主に一致していない。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_007c948637f05981016adcd8fdb06c87d08668c36ff99b4712",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"受領確認者が候補荷主CではなくDで、引渡しの受領承認が確認できないため。\"}",
+      "usage": {
+        "input_tokens": 994,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 66,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1060
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "受領確認者が候補荷主CではなくDで、引渡しの受領承認が確認できないため。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD20",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "D"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ab6f17008033a78ade1acfa7a42cecb87f902ae8757970bc92292d3f87b7737c",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ab6f17008033a78ade1acfa7a42cecb87f902ae8757970bc92292d3f87b7737c",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ab6f17008033a78ade1acfa7a42cecb87f902ae8757970bc92292d3f87b7737c",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "ab6f17008033a78ade1acfa7a42cecb87f902ae8757970bc92292d3f87b7737c",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "ab6f17008033a78ade1acfa7a42cecb87f902ae8757970bc92292d3f87b7737c",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "ab6f17008033a78ade1acfa7a42cecb87f902ae8757970bc92292d3f87b7737c",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "ROLE_MISMATCH",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "6332379e4142deb7febc82fb4f449f2967933a25b79555c56347eb6ebfe066ab"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD21",
+      "description": "採算値を参加各社へ出そうとする要求を止める。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_01b9b2f7ec03fb7a016adcd8ff232887d0b2179fa7a7671172",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"ACCEPT\",\"reason\":\"容量・時間条件を満たし、必要な承認と引渡し確認があります。採算値は開示対象外のため共有しません。\"}",
+      "usage": {
+        "input_tokens": 1001,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 72,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1073
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "ACCEPT",
+        "reason": "容量・時間条件を満たし、必要な承認と引渡し確認があります。採算値は開示対象外のため共有しません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD21",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks",
+                  "revenue_yen"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "654a65a098de17536ba5b099a70558d7b947b5bf8def19623ad83e9d19408cfc",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "654a65a098de17536ba5b099a70558d7b947b5bf8def19623ad83e9d19408cfc",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "654a65a098de17536ba5b099a70558d7b947b5bf8def19623ad83e9d19408cfc",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "654a65a098de17536ba5b099a70558d7b947b5bf8def19623ad83e9d19408cfc",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "654a65a098de17536ba5b099a70558d7b947b5bf8def19623ad83e9d19408cfc",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "654a65a098de17536ba5b099a70558d7b947b5bf8def19623ad83e9d19408cfc",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "DISCLOSURE_DENIED",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "3db64d1faee799486700f2049ae97293bb94a2fd1d681bf417a94c3375eb3819"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": true,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD26",
+      "description": "承認が対象にした計画と現在の計画の内容が異なる。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_0faa72c67bffb7f6016adcd900d10c87d09cabc5bd6d1d62f4",
+      "raw_model_output": "{\"candidate_kg\":800,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"計画の数値は容量・時間条件内ですが、承認・確認・引渡しがすべて現在の計画に一致していません。\"}",
+      "usage": {
+        "input_tokens": 997,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 72,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1069
+      },
+      "proposal": {
+        "candidate_kg": 800,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "計画の数値は容量・時間条件内ですが、承認・確認・引渡しがすべて現在の計画に一致していません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD26",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 800,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "BINDING_HASH",
+                    "party": "CARRIER"
+                  },
+                  {
+                    "status": "REJECT",
+                    "code": "BINDING_HASH",
+                    "party": "A"
+                  },
+                  {
+                    "status": "REJECT",
+                    "code": "BINDING_HASH",
+                    "party": "B"
+                  },
+                  {
+                    "status": "REJECT",
+                    "code": "BINDING_HASH",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R07",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "BINDING_HASH",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                },
+                {
+                  "status": "REJECT",
+                  "code": "BINDING_HASH",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "f3fd2957186d7e15ece518015eb8ee02e3ac530f22b0cfc054817e74847e860e"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD27",
+      "description": "版を更新した後、旧版の承認・根拠を使い回さない。",
+      "original_expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_05e350a2e929940a016adcd903a02487d096e6b38952b064e7",
+      "raw_model_output": "{\"candidate_kg\":800,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"改訂2に一致する承認・計画根拠・引渡し確認がなく、旧版の記録は利用できません。\"}",
+      "usage": {
+        "input_tokens": 1000,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 69,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1069
+      },
+      "proposal": {
+        "candidate_kg": 800,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "改訂2に一致する承認・計画根拠・引渡し確認がなく、旧版の記録は利用できません。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD27",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 2,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 800,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "HOLD",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "BINDING_OLD",
+                    "party": "CARRIER"
+                  },
+                  {
+                    "status": "HOLD",
+                    "code": "BINDING_OLD",
+                    "party": "A"
+                  },
+                  {
+                    "status": "HOLD",
+                    "code": "BINDING_OLD",
+                    "party": "B"
+                  },
+                  {
+                    "status": "HOLD",
+                    "code": "BINDING_OLD",
+                    "party": "C"
+                  }
+                ]
+              },
+              {
+                "id": "R07",
+                "status": "HOLD",
+                "issues": [
+                  {
+                    "status": "HOLD",
+                    "code": "BINDING_OLD",
+                    "party": ""
+                  }
+                ]
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "HOLD",
+              "issues": [
+                {
+                  "status": "HOLD",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                },
+                {
+                  "status": "HOLD",
+                  "code": "BINDING_OLD",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "bf11b016ace81a97980124c4f87e58576d579e02397da332796deee42979a421"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD29",
+      "description": "参加が成立していても別の相手への引渡しは認めない。",
+      "original_expected": {
+        "participation": "PASS",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_069fb8fe2c155fca016adcd905aacc87d09bf9cf3433a2e7c9",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"DECLINE\",\"reason\":\"参加条件と計画上の確認はあるが、引渡し先がDであり、別の相手への引渡しを認めない条件に反する。\"}",
+      "usage": {
+        "input_tokens": 997,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 76,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1073
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "DECLINE",
+        "reason": "参加条件と計画上の確認はあるが、引渡し先がDであり、別の相手への引渡しを認めない条件に反する。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD29",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "D",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "PASS",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "HANDOFF_PARTIES",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "e3ccb633729ea561678982800bd1f43fda47751f30d1d2ab82fe717291956a6c"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    },
+    {
+      "case_id": "JD32",
+      "description": "参加条件の成立を、利益の成立と混同しない。",
+      "original_expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "NEGATIVE"
+      },
+      "response_id": "resp_0435c89632f9a328016adcd907624887d0a850dc26e9178c99",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"ACCEPT\",\"reason\":\"既存条件内で容量・時間・承認・引渡し確認が成立。初期費用を含む利益性とは区別して判断。\"}",
+      "usage": {
+        "input_tokens": 993,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 72,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1065
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "ACCEPT",
+        "reason": "既存条件内で容量・時間・承認・引渡し確認が成立。初期費用を含む利益性とは区別して判断。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD32",
+            "now": 570,
+            "synthetic": true,
+            "mode": "simulation",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 10000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "PASS",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "PASS",
+                "issues": []
+              }
+            ],
+            "handoff": {
+              "status": "PASS",
+              "issues": []
+            },
+            "business": {
+              "status": "NEGATIVE",
+              "cost_yen": 12000,
+              "contribution_yen": -2000,
+              "break_even_trips": null,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": true
+          },
+          "record_sha256": "5f4704a7005b505767c2585ef66e117329acc5f2a591deb3d4685de4a1d4d468"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": true
+      }
+    },
+    {
+      "case_id": "JD38",
+      "description": "公開版が許すのは模擬操作だけ。実運行指示は扱わない。",
+      "original_expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      },
+      "response_id": "resp_045d76f03071a5a4016adcd909187487d0a26f8c7ea1c8cfb1",
+      "raw_model_output": "{\"candidate_kg\":600,\"candidate_pallets\":2,\"candidate_arrival\":570,\"recommendation\":\"WAIT\",\"reason\":\"模擬操作のみ許可された公開版に対し、dispatch指定は範囲外です。\"}",
+      "usage": {
+        "input_tokens": 1001,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 60,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1061
+      },
+      "proposal": {
+        "candidate_kg": 600,
+        "candidate_pallets": 2,
+        "candidate_arrival": 570,
+        "recommendation": "WAIT",
+        "reason": "模擬操作のみ許可された公開版に対し、dispatch指定は範囲外です。"
+      },
+      "check": {
+        "proposal_changed_fields": [],
+        "blocked_ungrounded_fields": [],
+        "engine_record": {
+          "schema": "joint-delivery-record/v1",
+          "profile_sha256": "7db4db5624c5475d1d2c80ee731ba5bffbc3cb90deeb12fa57ff98b1c1b7062f",
+          "input": {
+            "schema": "joint-delivery-input/v1",
+            "case_id": "JD38",
+            "now": 570,
+            "synthetic": true,
+            "mode": "dispatch",
+            "plan": {
+              "id": "JD-001",
+              "revision": 1,
+              "policy_version": "public-1",
+              "route_id": "R-001",
+              "candidate": "C",
+              "shipments": {
+                "A": {
+                  "kg": 1600,
+                  "pallets": 3,
+                  "arrival": 550,
+                  "mixing": true
+                },
+                "B": {
+                  "kg": 1200,
+                  "pallets": 3,
+                  "arrival": 600,
+                  "mixing": true
+                },
+                "C": {
+                  "kg": 600,
+                  "pallets": 2,
+                  "arrival": 570,
+                  "mixing": true
+                }
+              },
+              "terms": {
+                "version": "T-1",
+                "agreements": {
+                  "CARRIER": true,
+                  "A": true,
+                  "B": true,
+                  "C": true
+                },
+                "roles": {
+                  "pickup": "CARRIER",
+                  "transport": "CARRIER",
+                  "receipt": "C"
+                }
+              },
+              "disclosure": {
+                "recipient": "participants",
+                "fields": [
+                  "route_id",
+                  "candidate",
+                  "revision",
+                  "participation",
+                  "handoff",
+                  "checks"
+                ]
+              }
+            },
+            "business": {
+              "revenue_yen": 20000,
+              "transport_yen": 5000,
+              "handling_yen": 3000,
+              "coordination_yen": 3000,
+              "system_yen": 1000,
+              "existing_compensation_yen": 0,
+              "opportunity_cost_yen": 0,
+              "initial_cost_yen": 200000
+            },
+            "workload": {
+              "manual_minutes": 30,
+              "assisted_minutes": 10,
+              "setup_minutes": 120
+            },
+            "approvals": [
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "CARRIER",
+                "actor": "DEMO-CARRIER",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "A",
+                "actor": "DEMO-A",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "B",
+                "actor": "DEMO-B",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              },
+              {
+                "plan_id": "JD-001",
+                "revision": 1,
+                "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+                "party": "C",
+                "actor": "DEMO-C",
+                "active": true,
+                "issued": 510,
+                "expires": 630
+              }
+            ],
+            "evidence": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 565,
+              "expires": 610,
+              "capacity_ok": true,
+              "schedule_ok": true
+            },
+            "handoff": {
+              "plan_id": "JD-001",
+              "revision": 1,
+              "plan_sha256": "7ec3aa146e3c7e1a698427724724adc31d7cdcf1cbfe72871e128775cf0d4670",
+              "observed": 570,
+              "expires": 600,
+              "sender": "CARRIER",
+              "receiver": "C",
+              "quantity_ok": true,
+              "condition_ok": true,
+              "sender_ack": true,
+              "receiver_ack": true
+            }
+          },
+          "result": {
+            "participation": "REJECT",
+            "checks": [
+              {
+                "id": "R01",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R02",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R03",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R04",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R05",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R06",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R07",
+                "status": "PASS",
+                "issues": []
+              },
+              {
+                "id": "R08",
+                "status": "REJECT",
+                "issues": [
+                  {
+                    "status": "REJECT",
+                    "code": "SCOPE_DENIED",
+                    "party": ""
+                  }
+                ]
+              }
+            ],
+            "handoff": {
+              "status": "REJECT",
+              "issues": [
+                {
+                  "status": "REJECT",
+                  "code": "PARTICIPATION_BLOCKED",
+                  "party": ""
+                }
+              ]
+            },
+            "business": {
+              "status": "POSITIVE",
+              "cost_yen": 12000,
+              "contribution_yen": 8000,
+              "break_even_trips": 25,
+              "basis": "synthetic_per_trip_estimate"
+            },
+            "workload": {
+              "saved_minutes": 20,
+              "setup_break_even_cases": 6,
+              "basis": "synthetic_assumption_not_measurement"
+            },
+            "simulation_ready": false
+          },
+          "record_sha256": "f3b974240fb6498ce82880d245768bdc3f8688a79669cce8a1d4fcb70a9a76ff"
+        },
+        "recalculation_verified": true,
+        "model_accept_overridden": false,
+        "economic_warning": false
+      }
+    }
+  ],
+  "summary": {
+    "planned_cases": 24,
+    "api_calls_with_results": 24,
+    "evaluated_cases": 24,
+    "invalid_or_failed_cases": 0,
+    "participation": {
+      "PASS": 5,
+      "HOLD": 9,
+      "REJECT": 10
+    },
+    "handoff": {
+      "PASS": 2,
+      "HOLD": 11,
+      "REJECT": 11
+    },
+    "model_accept_overridden": 1,
+    "model_proposals_changed": 0,
+    "model_unverified_fills_blocked": 1,
+    "nonpositive_or_unknown_business": 1,
+    "usage": {
+      "input_tokens": 23821,
+      "output_tokens": 1592
+    }
+  }
+}
