@@ -1,0 +1,7 @@
+name = "joint-delivery-participation-assurance"
+version = "1.0.0"
+defaultTargets = ["JointDeliveryAssurance"]
+moreLeanArgs = ["-DwarningAsError=true"]
+
+[[lean_lib]]
+name = "JointDeliveryAssurance"

@@ -1,0 +1,13 @@
+# Generated evidence and local/private data are not public source files.
+output/
+private/
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.lake/
+lake-manifest.json
+.venv/
+venv/
+.DS_Store
+Thumbs.db

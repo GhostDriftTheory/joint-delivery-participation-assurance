@@ -1,0 +1,753 @@
+{
+  "schema": "joint-delivery-fixtures/v1",
+  "profile": {
+    "id": "joint-delivery-public-1",
+    "policy_version": "public-1",
+    "route_id": "R-001",
+    "capacity_kg": 4000,
+    "capacity_pallets": 10,
+    "terms_version": "T-1",
+    "existing": {
+      "A": {
+        "kg": 1600,
+        "pallets": 3,
+        "baseline_arrival": 550,
+        "max_delay": 5,
+        "window_start": 540,
+        "window_end": 570
+      },
+      "B": {
+        "kg": 1200,
+        "pallets": 3,
+        "baseline_arrival": 590,
+        "max_delay": 15,
+        "window_start": 570,
+        "window_end": 630
+      }
+    },
+    "candidates": {
+      "C": {
+        "window_start": 540,
+        "window_end": 600
+      },
+      "D": {
+        "window_start": 560,
+        "window_end": 615
+      }
+    },
+    "disclosure_fields": [
+      "route_id",
+      "candidate",
+      "revision",
+      "participation",
+      "handoff",
+      "checks"
+    ],
+    "check_titles": [
+      "対象・版と既存貨物",
+      "容量・混載",
+      "納品条件",
+      "費用・役割の合意",
+      "情報開示の範囲",
+      "共同承認",
+      "計画根拠の有効性",
+      "データ区分・利用範囲"
+    ]
+  },
+  "base": {
+    "schema": "joint-delivery-input/v1",
+    "case_id": "JD01",
+    "now": 570,
+    "synthetic": true,
+    "mode": "simulation",
+    "plan": {
+      "id": "JD-001",
+      "revision": 1,
+      "policy_version": "public-1",
+      "route_id": "R-001",
+      "candidate": "C",
+      "shipments": {
+        "A": {
+          "kg": 1600,
+          "pallets": 3,
+          "arrival": 550,
+          "mixing": true
+        },
+        "B": {
+          "kg": 1200,
+          "pallets": 3,
+          "arrival": 600,
+          "mixing": true
+        },
+        "C": {
+          "kg": 600,
+          "pallets": 2,
+          "arrival": 570,
+          "mixing": true
+        }
+      },
+      "terms": {
+        "version": "T-1",
+        "agreements": {
+          "CARRIER": true,
+          "A": true,
+          "B": true,
+          "C": true
+        },
+        "roles": {
+          "pickup": "CARRIER",
+          "transport": "CARRIER",
+          "receipt": "C"
+        }
+      },
+      "disclosure": {
+        "recipient": "participants",
+        "fields": [
+          "route_id",
+          "candidate",
+          "revision",
+          "participation",
+          "handoff",
+          "checks"
+        ]
+      }
+    },
+    "business": {
+      "revenue_yen": 20000,
+      "transport_yen": 5000,
+      "handling_yen": 3000,
+      "coordination_yen": 3000,
+      "system_yen": 1000,
+      "existing_compensation_yen": 0,
+      "opportunity_cost_yen": 0,
+      "initial_cost_yen": 200000
+    },
+    "workload": {
+      "manual_minutes": 30,
+      "assisted_minutes": 10,
+      "setup_minutes": 120
+    }
+  },
+  "scenarios": [
+    {
+      "id": "JD01",
+      "label": "正常：追加参加が成立",
+      "description": "各社の条件・承認・計画根拠・引渡し確認がそろう合成例。",
+      "changes": {},
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD02",
+      "label": "承認不足",
+      "description": "C社の合成承認を欠く。情報不足を承認済みと扱わない。",
+      "changes": {
+        "approvals.3": null
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD03",
+      "label": "荷量が未確認",
+      "description": "C社の重量が不明。空き容量があるとは判断しない。",
+      "changes": {
+        "plan.shipments.C.kg": null
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD04",
+      "label": "納品時刻が未確認",
+      "description": "C社への予定到着時刻が未定。",
+      "changes": {
+        "plan.shipments.C.arrival": null
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD05",
+      "label": "混載可否が未確認",
+      "description": "C社の混載条件の確認が未完了。",
+      "changes": {
+        "plan.shipments.C.mixing": null
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD06",
+      "label": "費用条件が未合意",
+      "description": "B社の費用条件への合意が未確認。",
+      "changes": {
+        "plan.terms.agreements.B": null
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD07",
+      "label": "承認を撤回",
+      "description": "一度そろったC社の承認を撤回する。",
+      "changes": {
+        "approvals.3.active": false
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD08",
+      "label": "承認期限の境界",
+      "description": "有効期限と検証時刻が等しい承認は利用しない。",
+      "changes": {
+        "approvals.3.expires": 570
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD09",
+      "label": "未来の承認",
+      "description": "検証時点より後に発行された承認は利用しない。",
+      "changes": {
+        "approvals.3.issued": 571
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD10",
+      "label": "計画根拠が欠落",
+      "description": "計画根拠が提供されていない。",
+      "changes": {
+        "evidence": null
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD11",
+      "label": "計画根拠が失効",
+      "description": "古い確認結果を現在の計画根拠として利用しない。",
+      "changes": {
+        "evidence.expires": 570
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD12",
+      "label": "引渡し確認待ち",
+      "description": "参加条件は成立しても、受領確認がなければ引渡し許可を出さない。",
+      "changes": {
+        "handoff.receiver_ack": null
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD13",
+      "label": "引渡し記録が欠落",
+      "description": "参加判定と引渡し判定は別。",
+      "changes": {
+        "handoff": null
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD14",
+      "label": "重量上限を超過",
+      "description": "既存荷物を残したままC社を追加すると4,000kgを超える。",
+      "changes": {
+        "plan.shipments.C.kg": 1300
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD15",
+      "label": "パレット上限を超過",
+      "description": "重量だけが収まっても、パレット数が上限を超える。",
+      "changes": {
+        "plan.shipments.C.pallets": 5
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD16",
+      "label": "既存荷主の許容遅延を超過",
+      "description": "A社の許容遅延5分を超える案は採用しない。",
+      "changes": {
+        "plan.shipments.A.arrival": 556
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD17",
+      "label": "新規荷主の納品期限に不適合",
+      "description": "C社の合意済み納品時間帯から外れる。自動で条件を緩めない。",
+      "changes": {
+        "plan.shipments.C.arrival": 610
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD18",
+      "label": "混載禁止",
+      "description": "C社が混載を認めない場合、共同配送案は不適合。",
+      "changes": {
+        "plan.shipments.C.mixing": false
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD19",
+      "label": "費用条件への不同意",
+      "description": "合意していない費用条件を多数決で押し切らない。",
+      "changes": {
+        "plan.terms.agreements.A": false
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD20",
+      "label": "担当役割の不一致",
+      "description": "受領確認者が今回の追加荷主に一致していない。",
+      "changes": {
+        "plan.terms.roles.receipt": "D"
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD21",
+      "label": "許可範囲外の開示要求",
+      "description": "採算値を参加各社へ出そうとする要求を止める。",
+      "changes": {
+        "plan.disclosure.fields": [
+          "route_id",
+          "candidate",
+          "revision",
+          "participation",
+          "handoff",
+          "checks",
+          "revenue_yen"
+        ]
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD22",
+      "label": "対象ルートが異なる",
+      "description": "固定した実証ルートとは異なる計画。",
+      "changes": {
+        "plan.route_id": "R-999"
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD23",
+      "label": "参照条件の版が異なる",
+      "description": "未確認の業務条件の版を黙って採用しない。",
+      "changes": {
+        "plan.policy_version": "public-2"
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD24",
+      "label": "承認者が一致しない",
+      "description": "承認データの名義だけでは所定の承認者に一致しない。",
+      "changes": {
+        "approvals.3.actor": "DEMO-A"
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD25",
+      "label": "承認の二重計上",
+      "description": "A社の承認を二重に入れてもC社の承認にはならない。",
+      "changes": {
+        "approvals.3.party": "A",
+        "approvals.3.actor": "DEMO-A"
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD26",
+      "label": "版を変えずに計画を書換え",
+      "description": "承認が対象にした計画と現在の計画の内容が異なる。",
+      "changes": {
+        "plan.shipments.C.kg": 800
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD27",
+      "label": "計画改訂後の再承認待ち",
+      "description": "版を更新した後、旧版の承認・根拠を使い回さない。",
+      "changes": {
+        "plan.revision": 2,
+        "plan.shipments.C.kg": 800
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "HOLD",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD28",
+      "label": "改訂・再承認後に成立",
+      "description": "改訂計画に対する合成承認・根拠・引渡し確認を明示的に更新。",
+      "changes": {
+        "plan.revision": 2,
+        "plan.shipments.C.kg": 800
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD29",
+      "label": "引渡し相手が異なる",
+      "description": "参加が成立していても別の相手への引渡しは認めない。",
+      "changes": {
+        "handoff.receiver": "D"
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD30",
+      "label": "引渡し数量の不一致",
+      "description": "引渡し時の数量が一致しない。",
+      "changes": {
+        "handoff.quantity_ok": false
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD31",
+      "label": "引渡し確認が失効",
+      "description": "過去の受領確認を現在の引渡しに流用しない。",
+      "changes": {
+        "handoff.expires": 570,
+        "handoff.observed": 569
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "HOLD",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD32",
+      "label": "参加可能だが赤字",
+      "description": "参加条件の成立を、利益の成立と混同しない。",
+      "changes": {
+        "business.revenue_yen": 10000
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "NEGATIVE"
+      }
+    },
+    {
+      "id": "JD33",
+      "label": "参加可能だが損益ゼロ",
+      "description": "初期費用回収を見込めない単便の損益ゼロ例。",
+      "changes": {
+        "business.revenue_yen": 12000
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "BREAKEVEN"
+      }
+    },
+    {
+      "id": "JD34",
+      "label": "原価が未確定",
+      "description": "未知の原価をゼロとみなして黒字にしない。",
+      "changes": {
+        "business.handling_yen": null
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "UNKNOWN"
+      }
+    },
+    {
+      "id": "JD35",
+      "label": "容量・時刻の上限と一致",
+      "description": "重量4,000kg・パレット10枚・C社納品10:00の境界例。",
+      "changes": {
+        "plan.shipments.C.kg": 1200,
+        "plan.shipments.C.pallets": 4,
+        "plan.shipments.C.arrival": 600
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD36",
+      "label": "追加企業をD社に変更",
+      "description": "同じ固定ルート・検証方式で別の架空荷主を追加する。探索や汎用接続の証明ではない。",
+      "changes": {
+        "plan.candidate": "D",
+        "plan.shipments": {
+          "A": {
+            "kg": 1600,
+            "pallets": 3,
+            "arrival": 550,
+            "mixing": true
+          },
+          "B": {
+            "kg": 1200,
+            "pallets": 3,
+            "arrival": 600,
+            "mixing": true
+          },
+          "D": {
+            "kg": 600,
+            "pallets": 2,
+            "arrival": 570,
+            "mixing": true
+          }
+        },
+        "plan.terms.agreements": {
+          "CARRIER": true,
+          "A": true,
+          "B": true,
+          "D": true
+        },
+        "plan.terms.roles.receipt": "D"
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "PASS",
+        "handoff": "PASS",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD37",
+      "label": "既存貨物の削減で見かけ上成立",
+      "description": "A社の既存貨物を勝手に減らして空き容量を作る案を止める。",
+      "changes": {
+        "plan.shipments.A.kg": 1000
+      },
+      "refresh": "all",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    },
+    {
+      "id": "JD38",
+      "label": "実運行の指示を要求",
+      "description": "公開版が許すのは模擬操作だけ。実運行指示は扱わない。",
+      "changes": {
+        "mode": "dispatch"
+      },
+      "refresh": "none",
+      "expected": {
+        "participation": "REJECT",
+        "handoff": "REJECT",
+        "business": "POSITIVE"
+      }
+    }
+  ],
+  "messages": {
+    "OK": "条件成立",
+    "TARGET_MISMATCH": "対象ルート・条件版が一致しません",
+    "EXISTING_CARGO_CHANGED": "既存荷主の貨物が変更されています",
+    "MISSING_EXISTING_CARGO": "既存貨物の確認が不足しています",
+    "WEIGHT_OVER": "重量上限を超えています",
+    "PALLETS_OVER": "パレット上限を超えています",
+    "WEIGHT_UNKNOWN": "重量が未確認です",
+    "PALLETS_UNKNOWN": "パレット数が未確認です",
+    "MIXING_DENIED": "混載が認められていません",
+    "MIXING_UNKNOWN": "混載可否が未確認です",
+    "ARRIVAL_UNKNOWN": "到着時刻が未確認です",
+    "WINDOW_VIOLATION": "納品時間帯に適合しません",
+    "EXISTING_DELAY": "既存荷主の許容遅延を超えています",
+    "STOP_ORDER": "固定の立寄り順と到着時刻が整合しません",
+    "TERMS_VERSION": "合意条件の版が一致しません",
+    "TERMS_DENIED": "費用条件に不同意があります",
+    "TERMS_UNKNOWN": "費用条件の合意が未確認です",
+    "ROLE_MISMATCH": "確認担当の役割が一致しません",
+    "DISCLOSURE_DENIED": "許可範囲外の情報開示要求です",
+    "APPROVAL_MISSING": "所定の承認がありません",
+    "APPROVAL_DUPLICATE": "承認が重複しています",
+    "APPROVAL_EXTRA": "想定外の主体による承認です",
+    "ACTOR_MISMATCH": "所定の合成承認者と一致しません",
+    "BINDING_TARGET": "根拠・承認の対象計画が異なります",
+    "BINDING_OLD": "改訂計画への再確認が必要です",
+    "BINDING_FUTURE": "未確認の計画版を参照しています",
+    "BINDING_HASH": "同じ版の計画内容が一致しません",
+    "REVOKED": "承認が撤回されています",
+    "NOT_YET_VALID": "確認時刻が現在より後です",
+    "EXPIRED": "有効期限を過ぎています",
+    "EVIDENCE_MISSING": "計画根拠が不足しています",
+    "CAPACITY_UNCONFIRMED": "容量の確認が未完了です",
+    "CAPACITY_DENIED": "容量の確認結果が不適合です",
+    "SCHEDULE_UNCONFIRMED": "運行計画の確認が未完了です",
+    "SCHEDULE_DENIED": "運行計画の確認結果が不適合です",
+    "SCOPE_DENIED": "合成データ・模擬操作の範囲外です",
+    "HANDOFF_MISSING": "引渡し確認がありません",
+    "HANDOFF_PARTIES": "引渡しの当事者が一致しません",
+    "QUANTITY_UNKNOWN": "引渡し数量が未確認です",
+    "QUANTITY_MISMATCH": "引渡し数量が一致しません",
+    "CONDITION_UNKNOWN": "荷姿状態が未確認です",
+    "CONDITION_BAD": "荷姿状態が不適合です",
+    "SENDER_UNKNOWN": "送り手の確認がありません",
+    "SENDER_DENIED": "送り手が引渡しを承認していません",
+    "RECEIVER_UNKNOWN": "受け手の確認がありません",
+    "RECEIVER_DENIED": "受け手が受領を承認していません",
+    "PARTICIPATION_BLOCKED": "参加条件が成立していません"
+  }
+}
