@@ -93,10 +93,10 @@ html{scroll-padding-top:22px}.hero{padding:42px 0 22px}.hero h1{font-size:44px;l
 <main class="wrap">
 <noscript><p class="card">この操作デモにはJavaScriptが必要です。Pythonでの実行・再検証手順はREADME.mdを参照してください。</p></noscript>
 <section class="hero">
-<p class="kicker">共同配送・荷主の受け入れ判断を、ルールに</p>
+<p class="kicker">トラックの積載率を上げる、共同配送の新しい受け入れ判断</p>
 <h1>空いているスペースを、<br><span>次の売上に。</span></h1>
 <p class="sub">その共同配送、荷主を増やすたびに、<br class="desktop-break">ベテランの勘で「受け入れていいか」を確かめていませんか。</p>
-<p>見るのは「積めるか」だけではありません。既存の荷主との約束を守れるか、黒字で受け入れられるか——。いまは人の勘と電話とExcelで確かめているその判断を、同じ条件なら誰がやっても同じ結果になるルールにします。属人的な運用から抜け出し、荷主を増やしにいくための土台です。</p>
+<p>見るのは「積めるか」だけではありません。既存の荷主との約束を守れるか、黒字で受け入れられるか——。いまは人の勘と電話とExcelで確かめているその判断を、同じ条件なら誰がやっても同じ結果になるルールにします。属人的な運用から抜け出し、荷主を増やして積載率を上げにいくための土台です。</p>
 <div class="hero-bottom"><div class="hero-actions"><a class="btn primary" href="#examples">まず3つの具体例を見る <span aria-hidden="true">↓</span></a><a class="btn" href="#decision-demo">実際に動かしてみる</a></div><p class="scope-tag">固定1ルート・既存2社＋候補1社<br>合成データ / 実運行・実システム接続なし</p></div>
 </section>
 <div id="boot-error" role="alert" hidden></div>
@@ -152,7 +152,24 @@ html{scroll-padding-top:22px}.hero{padding:42px 0 22px}.hero h1{font-size:44px;l
 <section class="card" id="checks"><div class="section-heading"><h2>受け入れてよいかを決める、8つのチェック</h2><span class="quiet">NG ＞ 要確認 ＞ OK の順で集計</span></div><p class="quiet" style="margin:0 0 12px">下の8点を、毎回同じ基準で自動チェックします。1つでも破れていれば<b>NG</b>、未確認が残れば<b>要確認</b>、すべてそろえば<b>OK</b>です。</p><ul class="check-list" id="check-list"></ul><div class="callout"><b id="handoff-detail-title">引き渡しの確認</b><span id="handoff-detail"></span></div></section>
 
 </div>
-
+<details class="demo-ops" id="ops"><summary><b>条件を自分で変えて、確かめる</b><span>　運用・技術の担当者向け。経営判断では、ここは見なくて大丈夫です。</span></summary>
+<div class="stack">
+<section class="card" id="controls"><div class="section-heading"><h2>数字を変えて、判定の変化を見る</h2><span class="mini-label">試算・模擬操作</span></div><p class="step-label">1. 受け入れ案の数字を変える（変更すると、上の判定・積載率・チェックに反映されます）</p><div class="form-grid"><label for="candidate-kg">追加荷主の重量（kg）<input id="candidate-kg" type="number" min="1" max="1000000" step="1" inputmode="numeric"></label><label for="candidate-arrival">追加荷主への到着予定<input id="candidate-arrival" type="time" step="60"></label><label for="revenue">追加売上（円 / 1運行）<input id="revenue" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label><label for="handling-cost">追加荷役費（円 / 1運行）<input id="handling-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label></div><details class="assumptions"><summary>費用・初期投資・工数の仮定も変更する</summary><div class="form-grid">
+<label for="transport-cost">追加輸送費（円 / 1運行）<input id="transport-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
+<label for="coordination-cost">調整・管理費（円 / 1運行）<input id="coordination-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
+<label for="system-cost">システム費（円 / 1運行）<input id="system-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
+<label for="compensation-cost">既存荷主への補償（円 / 1運行）<input id="compensation-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
+<label for="opportunity-cost">他案件の機会損失（円 / 1運行）<input id="opportunity-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
+<label for="initial-cost">初期費用（円 / 一度のみ）<input id="initial-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
+<label for="manual-time">人手での調整（分 / 案件）<input id="manual-time" type="number" min="0" max="100000" step="1" inputmode="numeric"></label>
+<label for="assisted-time">利用時の調整（分 / 案件）<input id="assisted-time" type="number" min="0" max="100000" step="1" inputmode="numeric"></label>
+<label for="setup-time">初期設定（分 / 一度のみ）<input id="setup-time" type="number" min="0" max="100000" step="1" inputmode="numeric"></label>
+</div><p class="note">すべて試算用の仮定です。空欄は未確認。契約・料金合意を書き換えるものではありません。実企業の秘密情報は入力せず、公開可能な仮定値で比較してください。</p></details>
+<div class="buttons"><button id="apply" class="btn primary" type="button">変更を反映して再検証</button><a class="textbutton" href="#business-review">採算の内訳へ</a></div><p class="note">空欄は未確認として扱います。貨物・時刻の変更では計画版を更新し、旧版の承認・根拠を使い回しません。</p><div class="divider"></div><p class="step-label">2. 明示的に確認・承認する</p><div class="buttons"><button id="refresh-planning" class="btn soft" type="button">合成承認・計画根拠を更新</button><button id="refresh-handoff" class="btn" type="button">合成引渡し確認を更新</button><button id="revoke" class="btn danger" type="button">追加荷主の承認を撤回</button></div><p class="note">ボタンは架空の承認データを作るものです。実際の本人確認・契約・業務承認は行いません。</p><ul id="action-log" class="action-log" aria-live="polite"></ul></section>
+<section class="card"><div class="section-heading"><h2>古い許可で実行しない</h2><span class="mini-label">模擬ゲート</span></div><p class="quiet">許可を発行した後でも、承認の撤回・計画変更があれば停止。同じ計画ID・版・引渡し先の操作は再使用を止めます。</p><div class="buttons"><button id="issue-permit" class="btn soft" type="button">模擬許可を発行</button><button id="use-permit" class="btn primary" type="button" disabled>模擬引渡しを試す</button></div><div id="gate-message" class="gate-message" role="status">受け入れ・引き渡しの両方が「OK」のとき、模擬許可を発行できます。</div><p class="note">実配送は行いません。使用状態はこの画面内だけで保持し、再読み込み・ケース切替でリセットします。本番の改変耐性・永続的な再使用防止を保証するものではありません。</p></section>
+<section class="card"><div class="section-heading"><h2>共有する情報を限定する</h2></div><p class="quiet">参加各社向けの要約には、判定と計画識別情報だけを出力。貨物量・採算・承認の詳細を含めません。</p><div class="buttons"><button id="download-summary" class="btn" type="button">共有用要約JSONを保存</button></div><p class="note">固定項目の選別です。情報の秘匿性や、結果からの推測まで保証するものではありません。要約だけでは完全な再検証はできません。</p></section>
+</div>
+</details>
 <section class="card business-review" id="business-review" aria-labelledby="business-title">
 <div class="section-heading"><div><p class="kicker">BUSINESS CASE</p><h2 id="business-title">「積める」から、「利益を残して受け入れられるか」へ。</h2></div><span class="mini-label">合成試算・実測ではありません</span></div>
 <p class="quiet">追加の売上だけでなく、荷役・調整・補償・他案件の機会損失まで差し引く。受け入れてよいかの判定とは別に、「この1社で、本当に利益が残るか」を確かめます。</p>
@@ -176,24 +193,6 @@ html{scroll-padding-top:22px}.hero{padding:42px 0 22px}.hero h1{font-size:44px;l
 <p class="note">後続の共同実証・展開は提案です。この固定1ルートPoCで、実企業の参加、汎用接続、ネットワーク全体の収益拡大まで実証したとは扱いません。</p>
 <div class="pilot-close"><strong>次の商談は、対象となる既存1ルートの選定から。</strong><span>共同実証・導入のご相談：株式会社AIアシュアランス</span></div>
 </section>
-<details class="demo-ops" id="ops" open><summary><b>条件を自分で変えて、確かめる</b><span>　運用・技術の担当者向け。経営判断では、ここは見なくて大丈夫です。</span></summary>
-<div class="stack">
-<section class="card" id="controls"><div class="section-heading"><h2>数字を変えて、判定の変化を見る</h2><span class="mini-label">試算・模擬操作</span></div><p class="step-label">1. 受け入れ案の数字を変える（変更すると、上の判定・積載率・チェックに反映されます）</p><div class="form-grid"><label for="candidate-kg">追加荷主の重量（kg）<input id="candidate-kg" type="number" min="1" max="1000000" step="1" inputmode="numeric"></label><label for="candidate-arrival">追加荷主への到着予定<input id="candidate-arrival" type="time" step="60"></label><label for="revenue">追加売上（円 / 1運行）<input id="revenue" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label><label for="handling-cost">追加荷役費（円 / 1運行）<input id="handling-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label></div><details class="assumptions"><summary>費用・初期投資・工数の仮定も変更する</summary><div class="form-grid">
-<label for="transport-cost">追加輸送費（円 / 1運行）<input id="transport-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
-<label for="coordination-cost">調整・管理費（円 / 1運行）<input id="coordination-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
-<label for="system-cost">システム費（円 / 1運行）<input id="system-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
-<label for="compensation-cost">既存荷主への補償（円 / 1運行）<input id="compensation-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
-<label for="opportunity-cost">他案件の機会損失（円 / 1運行）<input id="opportunity-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
-<label for="initial-cost">初期費用（円 / 一度のみ）<input id="initial-cost" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
-<label for="manual-time">人手での調整（分 / 案件）<input id="manual-time" type="number" min="0" max="100000" step="1" inputmode="numeric"></label>
-<label for="assisted-time">利用時の調整（分 / 案件）<input id="assisted-time" type="number" min="0" max="100000" step="1" inputmode="numeric"></label>
-<label for="setup-time">初期設定（分 / 一度のみ）<input id="setup-time" type="number" min="0" max="100000" step="1" inputmode="numeric"></label>
-</div><p class="note">すべて試算用の仮定です。空欄は未確認。契約・料金合意を書き換えるものではありません。実企業の秘密情報は入力せず、公開可能な仮定値で比較してください。</p></details>
-<div class="buttons"><button id="apply" class="btn primary" type="button">変更を反映して再検証</button><a class="textbutton" href="#business-review">採算の内訳へ</a></div><p class="note">空欄は未確認として扱います。貨物・時刻の変更では計画版を更新し、旧版の承認・根拠を使い回しません。</p><div class="divider"></div><p class="step-label">2. 明示的に確認・承認する</p><div class="buttons"><button id="refresh-planning" class="btn soft" type="button">合成承認・計画根拠を更新</button><button id="refresh-handoff" class="btn" type="button">合成引渡し確認を更新</button><button id="revoke" class="btn danger" type="button">追加荷主の承認を撤回</button></div><p class="note">ボタンは架空の承認データを作るものです。実際の本人確認・契約・業務承認は行いません。</p><ul id="action-log" class="action-log" aria-live="polite"></ul></section>
-<section class="card"><div class="section-heading"><h2>古い許可で実行しない</h2><span class="mini-label">模擬ゲート</span></div><p class="quiet">許可を発行した後でも、承認の撤回・計画変更があれば停止。同じ計画ID・版・引渡し先の操作は再使用を止めます。</p><div class="buttons"><button id="issue-permit" class="btn soft" type="button">模擬許可を発行</button><button id="use-permit" class="btn primary" type="button" disabled>模擬引渡しを試す</button></div><div id="gate-message" class="gate-message" role="status">受け入れ・引き渡しの両方が「OK」のとき、模擬許可を発行できます。</div><p class="note">実配送は行いません。使用状態はこの画面内だけで保持し、再読み込み・ケース切替でリセットします。本番の改変耐性・永続的な再使用防止を保証するものではありません。</p></section>
-<section class="card"><div class="section-heading"><h2>共有する情報を限定する</h2></div><p class="quiet">参加各社向けの要約には、判定と計画識別情報だけを出力。貨物量・採算・承認の詳細を含めません。</p><div class="buttons"><button id="download-summary" class="btn" type="button">共有用要約JSONを保存</button></div><p class="note">固定項目の選別です。情報の秘匿性や、結果からの推測まで保証するものではありません。要約だけでは完全な再検証はできません。</p></section>
-</div>
-</details>
 <div class="section-divider" id="verify"><p class="kicker">ここから下は、技術・監査の担当者向けです</p><h2>この判定、本当に信用していい？ を、自分で確かめる。</h2><p class="quiet">経営判断としては、上の3つの具体例と「採算」まででつかめます。ここから下は、「同じ記録をPythonでも再計算できるか」「判定を書き換えたら気づけるか」を、技術・監査の担当者が検証するための領域です。</p></div>
 <section class="card records" id="records"><div class="section-heading"><h2>同じ記録を、別の手段でもう一度計算する</h2><span class="mini-label">Python ↔ ブラウザ</span></div><div class="record-grid"><div><h3>いまの入力・判定を保存</h3><p>計画・承認・根拠・採算・判定を1つのJSONファイルに保存します。同じ内容を、Pythonでもこの画面でも再計算して照合できます。</p><div class="buttons"><button id="download-record" class="btn primary" type="button">検証記録JSONを保存</button><button id="tamper-test" class="btn" type="button">判定の書き換えを検出する</button></div><p class="note">保存ファイルには入力・採算が含まれます。実企業の秘密情報をこの公開デモに読み込まないでください。</p></div><div><label class="upload" for="record-file"><b>保存したJSONを選んで、再計算で照合</b><input id="record-file" type="file" accept=".json,application/json"></label><div id="verify-message" class="result-message" role="status">記録が一致することと、「受け入れOK」であることは別です。</div></div></div></section>
 <details class="card advanced" id="suite-details"><summary>標準38ケースの一括検査・検証範囲</summary><div class="suite-head"><button id="run-suite" class="btn soft" type="button">標準ケースを一括検査</button><button id="download-suite" class="btn" type="button">全ケースを1つのJSONで保存</button><span id="suite-message" class="quiet" role="status"></span></div><div class="table-scroll"><table><thead><tr><th>ケース</th><th>参加</th><th>引渡し</th><th>採算</th><th>期待判定</th></tr></thead><tbody id="suite-table"></tbody></table></div></details>
@@ -389,7 +388,7 @@ function renderBusinessView(r,p){
 
 function render(){
  record=engine.record(current);const r=record.result,p=current.plan,cs=p.shipments[p.candidate];
- for(const [prefix,status] of [['participation',r.participation],['handoff',r.handoff.status]]){$(prefix+'-card').className='card metric '+status;$(prefix+'-status').textContent=status;$(prefix+'-status').className='status-'+status;$(prefix+'-text').textContent=labels[status];}
+ for(const [prefix,status] of [['participation',r.participation],['handoff',r.handoff.status]]){$(prefix+'-card').className='card metric '+status;$(prefix+'-status').textContent=labels[status];$(prefix+'-status').className='status-'+status;$(prefix+'-text').textContent=status;}
  const profit=r.business.contribution_yen;$('profit').textContent=profit===null?'未確定':(profit>0?'+':'')+new Intl.NumberFormat('ja-JP').format(profit)+'円';$('profit').className=profit===null?'status-HOLD':profit<0?'status-REJECT':'';$('profit-text').textContent=businessLabels[r.business.status];
  $('route-stops').replaceChildren();for(const party of ['A',p.candidate,'B']){const st=el('div','stop'+(party===p.candidate?' new':''));st.append(el('div','kind',party===p.candidate?'追加荷主':'既存荷主'),el('b','',party+'社'),el('div','time',clock(p.shipments[party].arrival)));$('route-stops').append(st);}
  const loads=Object.values(p.shipments).map(s=>s.kg),weight=loads.filter(v=>v!==null).reduce((a,b)=>a+b,0),pallets=Object.values(p.shipments).map(s=>s.pallets);$('weight-total').textContent=(loads.includes(null)?'確認済み ':'')+weight.toLocaleString('ja-JP')+' / 4,000 kg';$('load-bar').style.width=Math.min(100,weight/4000*100)+'%';$('load-bar').style.background=weight>4000?'var(--bad)':loads.includes(null)?'#b67b16':'var(--accent)';$('pallet-total').textContent='パレット '+(pallets.includes(null)?'未確定':pallets.reduce((a,b)=>a+b,0)+' / 10 枚');$('plan-version').textContent='計画 '+p.id+' / 第'+p.revision+'版';
